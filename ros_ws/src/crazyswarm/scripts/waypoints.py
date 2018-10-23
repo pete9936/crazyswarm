@@ -72,5 +72,5 @@ if __name__ == "__main__":
             cf.goTo(pos, 0, waypoint.duration)
 
     # land
-    allcfs.land(targetHeight=0.02, duration=2.0)
+    allcfs.land(targetHeight=0.06, duration=2.0)
     timeHelper.sleep(2.0)

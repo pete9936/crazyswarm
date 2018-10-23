@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
       Splitter Ratio: 0.5
-    Tree Height: 348
+    Tree Height: 846
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -25,7 +25,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -52,19 +52,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        cf36:
+        cf1:
           Value: true
-        cf37:
-          Value: true
-        cf38:
-          Value: true
-        cf39:
-          Value: true
-        cf40:
-          Value: true
-        cf41:
-          Value: true
-        cf42:
+        cf2:
           Value: true
         world:
           Value: true
@@ -75,19 +65,9 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
-          cf36:
+          cf1:
             {}
-          cf37:
-            {}
-          cf38:
-            {}
-          cf39:
-            {}
-          cf40:
-            {}
-          cf41:
-            {}
-          cf42:
+          cf2:
             {}
       Update Interval: 0
       Value: true
@@ -124,6 +104,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
+    Default Light: true
     Fixed Frame: world
     Frame Rate: 30
   Name: root
@@ -177,6 +158,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 636
+  Width: 1004
   X: 640
-  Y: 18
+  Y: 24

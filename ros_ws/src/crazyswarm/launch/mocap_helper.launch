@@ -6,7 +6,7 @@
       # tracking
       motion_capture_type: "vicon" # one of vicon,optitrack,qualisys
       object_tracking_type: "motionCapture" # one of motionCapture,libobjecttracker
-      vicon_host_name: "vicon"
+      vicon_host_name: "172.19.36.188"
       # optitrack_local_ip: "localhost"
       # optitrack_server_ip: "optitrack"
       # qualisys_host_name: "10.0.5.219"
