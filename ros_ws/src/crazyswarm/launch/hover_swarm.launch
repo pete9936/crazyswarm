@@ -64,8 +64,6 @@
     <param name="timescale" value="0.8" />
   </node>
 
-<!-- node pkg="tf" type="static_transform_publisher" name="baselink_broadcaster" args="0 0 0 0 0 0 1 $(arg frame_base) /base/base_link 100" / -->
-
   <!-- run rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find crazyswarm)/launch/test.rviz"/>
 

@@ -3,7 +3,13 @@ crazyflies:
   id: 1
   initialPosition: [0.0, 0.0, 0.0]
   type: default
-- channel: 80
-  id: 2
-  initialPosition: [0.0, -0.75, 0.0]
-  type: default
+#- channel: 80
+#  id: 2
+#  initialPosition: [0.0, -0.75, 0.0]
+#  type: default
+
+# This is our turtlebot 'base'
+#- channel: 80
+#  id: 66
+#  initialPosition: [0.0, 1.5, 0.25]
+#  type: medium

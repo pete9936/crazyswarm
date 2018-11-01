@@ -40,15 +40,6 @@
 #ifdef ENABLE_VICON
 #include "libmotioncapture/vicon.h"
 #endif
-#ifdef ENABLE_OPTITRACK
-#include "libmotioncapture/optitrack.h"
-#endif
-#ifdef ENABLE_PHASESPACE
-#include "libmotioncapture/phasespace.h"
-#endif
-#ifdef ENABLE_QUALISYS
-#include <libmotioncapture/qualisys.h>
-#endif
 
 // Object tracker
 #include <libobjecttracker/object_tracker.h>
@@ -984,11 +975,17 @@ private:
         std::stringstream sstr;
         sstr << std::setfill ('0') << std::setw(2) << std::hex << id;
         std::string idHex = sstr.str();
-
-        std::string uri = "radio://" + std::to_string(m_radio) + "/" + std::to_string(channel) + "/2M/E7E7E7E7" + idHex;
-        std::string tf_prefix = "cf" + std::to_string(id);
-        std::string frame = "cf" + std::to_string(id);
-        cfConfigs.push_back({uri, tf_prefix, frame, id, type});
+	//if (id < 50){ //TODO: add some sort of condition like this that actually works
+          std::string uri = "radio://" + std::to_string(m_radio) + "/" + std::to_string(channel) + "/2M/E7E7E7E7" + idHex;
+          std::string tf_prefix = "cf" + std::to_string(id);
+          std::string frame = "cf" + std::to_string(id);
+          cfConfigs.push_back({uri, tf_prefix, frame, id, type});
+      //} else {
+          //std::string uri = "radio://" + std::to_string(m_radio) + "/" + std::to_string(channel) + "/2M/E7E7E7E7" + idHex;
+          //std::string tf_prefix = "base" + std::to_string(id);
+          //std::string frame = "base" + std::to_string(id);
+          //cfConfigs.push_back({uri, tf_prefix, frame, id, type});  // I'm sure this area will need some fixing
+	//}	  
       }
     }
 
@@ -1298,40 +1295,6 @@ public:
       mocap = new libmotioncapture::MotionCaptureVicon(hostName,
         /*enableObjects*/useMotionCaptureObjectTracking || !interactiveObject.empty(),
         /*enablePointcloud*/ !useMotionCaptureObjectTracking);
-    }
-#endif
-#ifdef ENABLE_OPTITRACK
-    else if (motionCaptureType == "optitrack")
-    {
-      std::string localIP;
-      std::string serverIP;
-      nl.getParam("optitrack_local_ip", localIP);
-      nl.getParam("optitrack_server_ip", serverIP);
-      mocap = new libmotioncapture::MotionCaptureOptitrack(localIP, serverIP);
-    }
-#endif
-#ifdef ENABLE_PHASESPACE
-    else if (motionCaptureType == "phasespace")
-    {
-      std::string ip;
-      int numMarkers;
-      nl.getParam("phasespace_ip", ip);
-      nl.getParam("phasespace_num_markers", numMarkers);
-      std::map<size_t, std::pair<int, int> > cfs;
-      cfs[231] = std::make_pair<int, int>(10, 11);
-      mocap = new libmotioncapture::MotionCapturePhasespace(ip, numMarkers, cfs);
-    }
-#endif
-#ifdef ENABLE_QUALISYS
-    else if (motionCaptureType == "qualisys")
-    {
-      std::string hostname;
-      int port;
-      nl.getParam("qualisys_host_name", hostname);
-      nl.getParam("qualisys_base_port", port);
-      mocap = new libmotioncapture::MotionCaptureQualisys(hostname, port,
-        /*enableObjects*/ true,
-        /*enablePointcloud*/ true);
     }
 #endif
     else {

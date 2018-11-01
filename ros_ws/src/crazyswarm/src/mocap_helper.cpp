@@ -7,15 +7,6 @@
 #ifdef ENABLE_VICON
 #include <libmotioncapture/vicon.h>
 #endif
-#ifdef ENABLE_OPTITRACK
-#include <libmotioncapture/optitrack.h>
-#endif
-#ifdef ENABLE_PHASESPACE
-#include <libmotioncapture/phasespace.h>
-#endif
-#ifdef ENABLE_QUALISYS
-#include <libmotioncapture/qualisys.h>
-#endif
 
 int main(int argc, char **argv)
 {
@@ -37,40 +28,6 @@ int main(int argc, char **argv)
     std::string hostName;
     nl.getParam("vicon_host_name", hostName);
     mocap = new libmotioncapture::MotionCaptureVicon(hostName,
-      /*enableObjects*/ true,
-      /*enablePointcloud*/ true);
-  }
-#endif
-#ifdef ENABLE_OPTITRACK
-  else if (motionCaptureType == "optitrack")
-  {
-    std::string localIP;
-    std::string serverIP;
-    nl.getParam("optitrack_local_ip", localIP);
-    nl.getParam("optitrack_server_ip", serverIP);
-    mocap = new libmotioncapture::MotionCaptureOptitrack(localIP, serverIP);
-  }
-#endif
-#ifdef ENABLE_PHASESPACE
-  else if (motionCaptureType == "phasespace")
-  {
-    std::string ip;
-    int numMarkers;
-    nl.getParam("phasespace_ip", ip);
-    nl.getParam("phasespace_num_markers", numMarkers);
-    std::map<size_t, std::pair<int, int> > cfs;
-    cfs[231] = std::make_pair<int, int>(10, 11);
-    mocap = new libmotioncapture::MotionCapturePhasespace(ip, numMarkers, cfs);
-  }
-#endif
-#ifdef ENABLE_QUALISYS
-  else if (motionCaptureType == "qualisys")
-  {
-    std::string hostname;
-    int port;
-    nl.getParam("qualisys_host_name", hostname);
-    nl.getParam("qualisys_base_port", port);
-    mocap = new libmotioncapture::MotionCaptureQualisys(hostname, port,
       /*enableObjects*/ true,
       /*enablePointcloud*/ true);
   }
