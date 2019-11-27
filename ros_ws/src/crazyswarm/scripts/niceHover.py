@@ -9,7 +9,6 @@ if __name__ == "__main__":
     swarm = Crazyswarm()
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
-
     allcfs.takeoff(targetHeight=Z, duration=1.0+Z)
     timeHelper.sleep(1.5+Z)
     for cf in allcfs.crazyflies:

@@ -22,7 +22,7 @@ class Waypoint:
 if __name__ == "__main__":
 
     # load csv file
-    data = np.loadtxt("waypoints.csv", skiprows=1, delimiter=',')
+    data = np.loadtxt("waypoints_test1.csv", skiprows=1, delimiter=',')
 
     # sort by agents
     data[data[:,0].argsort()]
