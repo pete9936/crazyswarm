@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     for agent in agents:
         cf = allcfs.crazyfliesById[agent]
-	cf.land(targetHeight=0.04, duration=2.0)
+	cf.land(targetHeight=0.05, duration=2.0)
     
     timeHelper.sleep(1.0) # maybe delete

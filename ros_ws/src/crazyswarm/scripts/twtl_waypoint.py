@@ -61,7 +61,7 @@ if __name__ == "__main__":
 	    pos = [waypoint.x, waypoint.y, waypoint.z]
 	    # print(waypoint.agent, pos, 2.0)
 	    cf = allcfs.crazyfliesById[waypoint.agent]
-	    cf.goTo(pos, 0, 1.5)
+	    cf.goTo(pos, 0, 1.9)
         elif waypoint.duration > 0:
 	    pos = [waypoint.x, waypoint.y, waypoint.z]
 	    cf = allcfs.crazyfliesById[waypoint.agent]

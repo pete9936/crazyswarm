@@ -22,7 +22,7 @@ class Waypoint:
 if __name__ == "__main__":
 
     # load csv file
-    data = np.loadtxt("waypoints_test1.csv", skiprows=1, delimiter=',')
+    data = np.loadtxt("waypoints_scenario4_static.csv", skiprows=1, delimiter=',')
 
     # sort by agents
     data[data[:,0].argsort()]
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     timeHelper = swarm.timeHelper
     allcfs = swarm.allcfs
 
-    allcfs.takeoff(targetHeight=1.0, duration=2.0)
+    allcfs.takeoff(targetHeight=0.5, duration=2.0)
     timeHelper.sleep(2.0)
     lastTime = 0.0
     for waypoint in waypoints:
@@ -62,7 +62,7 @@ if __name__ == "__main__":
             pos = [waypoint.x, waypoint.y, waypoint.z]
             # print(waypoint.agent, pos, 2.0)
             cf = allcfs.crazyfliesById[waypoint.agent]
-            cf.goTo(pos, 0, 2.0)
+            cf.goTo(pos, 0, 2.1)
         elif waypoint.duration > 0:
             timeHelper.sleep(waypoint.arrival - lastTime)
             lastTime = waypoint.arrival
